@@ -326,7 +326,7 @@ pip install -r requirements.txt
 
 **Institution**: Kazakh-British Technical University (KBTU)  
 **Course**: Robotics Final Project  
-**Semester**: Spring 2024  
+**Semester**: Autumn 2024  
 **Advisor**: Ilyas Muhammad
 
 ---
