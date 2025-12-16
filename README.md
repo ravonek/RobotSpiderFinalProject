@@ -1,76 +1,385 @@
-# 4‑Leg Spider Robot (Final Project)
+<div align="center">
+
+# 🕷️ Quadruped Spider Robot
+
+### *A 12-DOF Walking Robot with Simulation & Real-World Implementation*
 
 ![Spider Robot Banner](assets/images/banner.png)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![MicroPython](https://img.shields.io/badge/MicroPython-1.20+-green.svg)](https://micropython.org/)
+[![Isaac Sim](https://img.shields.io/badge/Isaac_Sim-4.0+-76B900.svg)](https://developer.nvidia.com/isaac-sim)
+
+[Features](#-features) • [Quick Start](#-quick-start) • [Hardware](#-hardware) • [Simulation](#-simulation) • [Documentation](#-documentation) • [Team](#-team)
+
+</div>
+
+---
+
+## 📖 Overview
+
+A biomimetic quadruped robot designed and built as a comprehensive robotics final project. This repository contains the complete software ecosystem including **MicroPython firmware** for real-time servo control, **NVIDIA Isaac Sim** integration for physics-based simulation, **URDF models**, CAD designs, and extensive documentation.
+
+### 🎯 Project Goals
+
+- ✅ Design a compact 4-legged robot with 12 degrees of freedom (3 DOF per leg)
+- ✅ Implement stable trot gait locomotion with coordinated leg movement
+- ✅ Develop reliable servo calibration and control pipeline
+- ✅ Create accurate physics simulation for testing before hardware deployment
+- ✅ Build modular, well-documented codebase for future enhancements
+
+<div align="center">
+
 ![Real Robot](assets/images/spider_robot_real.jpg)
 
-A 4‑leg “spider” robot built as a final robotics project.  
-This repository contains:
+*The completed quadruped robot in action*
 
-- **MicroPython firmware** for 12 servos (Raspberry Pi Pico or similar)
-- **Isaac Sim** script to load the robot and play a keyframe gait
-- Robot **URDF**, CAD renders, and demo media
+</div>
 
-## Quick repo map
+---
 
-- `firmware/pico/` — MicroPython servo control + gait demo
-- `sim/isaac/` — Isaac Sim playback script
-- `assets/urdf/` — URDF model
-- `assets/images/` — photos and CAD renders
-- `assets/demo/` — demo videos (tracked with Git LFS if you push to GitHub)
-- `docs/` — project documentation (abstract, hardware, architecture, gait, simulation)
+## ✨ Features
 
-## Demo media
+<table>
+<tr>
+<td width="50%">
 
-- `assets/demo/simulation_demo.mp4` — example video captured during development
-- **Real robot walking video:** place it as `assets/demo/real_robot_walk.mp4` (recommended via Git LFS)
+### 🤖 Hardware Control
+- **12-Servo PWM Control** with MicroPython
+- **Per-Joint Calibration** system
+- **Direction Mapping** for kinematic accuracy
+- **Smooth Interpolation** for fluid motion
+- **Real-time Gait Execution**
 
-### Git LFS (recommended for videos)
+</td>
+<td width="50%">
+
+### 🖥️ Simulation
+- **Isaac Sim Integration** with full physics
+- **URDF-based Robot Model**
+- **Keyframe Animation System**
+- **PD Controller Tuning**
+- **Visual Trajectory Playback**
+
+</td>
+</tr>
+</table>
+
+### 🎮 Walking Capabilities
+
+- **Trot Gait Pattern**: Diagonal leg pairs for stable locomotion
+- **Coordinated Movement**: Lift → Swing → Place → Pull sequence
+- **Adjustable Parameters**: Speed, stride length, lift height
+- **Smooth Transitions**: Interpolated joint trajectories
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
 
 ```bash
-git lfs install
-git lfs track "*.mp4"
-git add .gitattributes
-git add assets/demo/real_robot_walk.mp4
-git commit -m "Add real robot walking demo (LFS)"
-git push
+# For Simulation
+- NVIDIA GPU (RTX 2060 or better recommended)
+- NVIDIA Isaac Sim 4.0+
+- Python 3.10+
+
+# For Hardware
+- Raspberry Pi Pico (or compatible MicroPython board)
+- 12x PWM Servo Motors
+- 5-6V Power Supply (high current)
 ```
 
-## Running the firmware (MicroPython)
+### 🎬 Simulation Demo
 
-1. Flash MicroPython to your board (e.g., Raspberry Pi Pico).
-2. Open `firmware/pico/spider_firmware.py` in Thonny (or your IDE).
-3. Adjust:
-   - `NEUTRAL_OFFSETS` (per-joint calibration)
-   - `DIRECTION_MAP` (fix mirrored joints)
-   - `SERVO_PINS` if your wiring differs
-4. Run the script and test joints **one by one** before running the gait cycle.
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/quadruped-spider-robot.git
+cd quadruped-spider-robot
 
-> Safety: power servos from a separate 5–6V supply with enough current. Do not power many servos directly from the Pico 5V pin.
+# Install dependencies
+pip install -r requirements.txt
 
-## Running the Isaac Sim script
+# Run Isaac Sim simulation
+cd sim/isaac
+python robotSpiderSimulation.py
+```
 
-Isaac Sim typically runs in its own Python environment.  
-See `docs/simulation.md` for setup notes and a clean way to point the script to your USD path.
+### 🔧 Hardware Deployment
 
-## Gallery
+```bash
+# Flash MicroPython to Raspberry Pi Pico
+# Download .uf2 from micropython.org and drag to RPI-RP2 drive
 
-**CAD leg mechanism**  
-![CAD Leg](assets/images/spider_leg_cad.jpg)
+# Upload firmware
+pip install adafruit-ampy
+ampy --port /dev/ttyACM0 put firmware/pico/robotSpiderMove-1.py main.py
 
-**CAD assembly**  
-![CAD Assembly](assets/images/spider_robot_cad.jpg)
+# Power on and watch it walk! 🎉
+```
 
-## Documentation
+---
 
-Start here:
-- `docs/abstract.md`
-- `docs/hardware.md`
-- `docs/architecture.md`
-- `docs/gait.md`
-- `docs/simulation.md`
-- `docs/firmware.md`
+## 🏗️ Hardware
 
-## License
+### System Architecture
 
-MIT (see `LICENSE`).
+```
+┌─────────────────────────────────────────────────┐
+│                 Control Board                   │
+│         (Raspberry Pi Pico / ESP32)             │
+│                                                 │
+│  ┌──────────────────────────────────────────┐  │
+│  │   MicroPython Firmware                   │  │
+│  │   - PWM Generation (50Hz)                │  │
+│  │   - Servo Calibration                    │  │
+│  │   - Gait State Machine                   │  │
+│  │   - Trajectory Interpolation             │  │
+│  └──────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────┘
+           │  │  │  │
+           ▼  ▼  ▼  ▼
+    ┌────────────────────┐
+    │   12x Servo Motors │
+    │                    │
+    │  FL  FR  BL  BR    │
+    │  🦿  🦿  🦿  🦿    │
+    └────────────────────┘
+```
+
+### Components
+
+| Component | Specification | Quantity |
+|-----------|--------------|----------|
+| **Microcontroller** | Raspberry Pi Pico / ESP32 | 1 |
+| **Servo Motors** | MG90S or similar (180° PWM) | 12 |
+| **Power Supply** | 5-6V, 5A+ (LiPo recommended) | 1 |
+| **Frame** | 3D-printed PLA/ABS | Custom |
+| **Wiring** | Servo extension cables | 12+ |
+
+### Leg Configuration
+
+```
+     Front
+   FL ─── FR
+    │     │
+    │ 🕷️  │  (Body)
+    │     │
+   BL ─── BR
+     Rear
+```
+
+**Each leg has 3 joints:**
+- 🔄 **Hip (Coxa)**: Horizontal rotation
+- 📐 **Femur**: Vertical lift
+- 📏 **Tibia**: Foot positioning
+
+> 📘 **Detailed wiring guide**: See [`docs/hardware.md`](docs/hardware.md)
+
+---
+
+## 🎮 Simulation
+
+### Isaac Sim Workflow
+
+<div align="center">
+
+```mermaid
+graph LR
+    A[URDF Model] --> B[USD Conversion]
+    B --> C[Isaac Sim]
+    C --> D[Physics Engine]
+    D --> E[Visual Feedback]
+    E --> F[Joint Data]
+    F --> G[Gait Refinement]
+    G --> A
+    style C fill:#76B900
+    style D fill:#00758F
+```
+
+</div>
+
+### Key Features
+
+- **Real-time Physics**: Accurate contact dynamics and friction
+- **Visual Debugging**: 3D visualization of joint movements
+- **Parameter Tuning**: Adjust PD gains, velocities, limits
+- **Data Logging**: Export joint trajectories for analysis
+
+### Running Simulations
+
+```python
+# Basic simulation
+python sim/isaac/robotSpiderSimulation.py
+
+# With custom parameters
+python sim/isaac/robotSpiderSimulation.py \
+    --cycles 10 \
+    --keyframe-duration 0.3 \
+    --stiffness 40.0
+```
+
+### Demo Videos
+
+<table>
+<tr>
+<td width="50%" align="center">
+
+**🎥 Simulation Demo**
+
+[![Simulation](assets/images/sim_thumbnail.png)](assets/demo/simulation_demo.mp4)
+
+*Click to view simulation walkthrough*
+
+</td>
+<td width="50%" align="center">
+
+**🎥 Real Robot Demo**
+
+[![Real Robot](assets/images/real_thumbnail.png)](https://drive.google.com/drive/folders/1JOmnBiBbxM2T4DoV4F1_lLgWAIMYvdh8?usp=sharing)
+
+*Click to view on Google Drive*
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📁 Repository Structure
+
+```
+quadruped-spider-robot/
+│
+├── 📁 firmware/
+│   └── pico/
+│       ├── robotSpiderMove-1.py    # Main control firmware
+│       ├── servo_test.py            # Individual servo testing
+│       └── calibration.py           # Calibration utilities
+│
+├── 📁 sim/
+│   └── isaac/
+│       ├── robotSpiderSimulation.py # Isaac Sim main script
+│       └── config/
+│           └── simulation.yaml      # Simulation parameters
+│
+├── 📁 assets/
+│   ├── urdf/
+│   │   ├── paukrobotFinished.urdf   # Robot URDF model
+│   │   └── meshes/                  # STL mesh files
+│   ├── images/
+│   │   ├── banner.png
+│   │   ├── spider_robot_real.jpg
+│   │   └── cad_renders/
+│   └── demo/
+│       ├── simulation_demo.mp4
+│       └── real_robot_walk.mp4
+│
+├── 📁 docs/
+│   ├── abstract.md                  # Project abstract
+│   ├── hardware.md                  # Hardware guide
+│   ├── architecture.md              # System architecture
+│   ├── gait_planning.md             # Gait implementation
+│   ├── simulation.md                # Simulation setup
+│   └── firmware.md                  # Firmware documentation
+│
+├── 📄 README.md                     # This file
+├── 📄 QUICKSTART.md                 # 5-minute setup guide
+├── 📄 requirements.txt              # Python dependencies
+├── 📄 LICENSE                       # MIT License
+└── 📄 .gitattributes                # Git LFS configuration
+```
+
+---
+
+## 📚 Documentation
+
+| Document | Description |
+|----------|-------------|
+| [**Abstract**](docs/abstract.md) | Project overview and objectives |
+| [**Hardware Guide**](docs/hardware.md) | Wiring, assembly, and components |
+| [**Architecture**](docs/architecture.md) | System design and data flow |
+| [**Gait Planning**](docs/gait_planning.md) | Movement algorithms and tuning |
+| [**Simulation**](docs/simulation.md) | Isaac Sim setup and usage |
+| [**Firmware**](docs/firmware.md) | MicroPython implementation details |
+| [**Quick Start**](QUICKSTART.md) | Get running in 5 minutes |
+
+---
+
+## 🛠️ Development
+
+### Building from Source
+
+```bash
+# Clone repository
+git clone https://github.com/yourusername/quadruped-spider-robot.git
+cd quadruped-spider-robot
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run tests
+pytest tests/
+```
+
+### Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md).
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
+
+## 👥 Team
+
+##Kaldybekov Adilkhan
+##Bolat Aliyanur
+##Jumashev Tair
+##Tairov Ridvan
+
+---
+
+## 🎓 Academic Context
+
+**Institution**: Kazakh-British Technical University(KBTU)  
+**Course**: Robotics Final Project  
+**Semester**: Spring 2024  
+**Advisor**: Ilyas Muhammad
+
+---
+
+
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License
+
+Copyright (c) 2024 Kaldybekov Adilkhan, Bolat Aliyanur, 
+                     Jumashev Tair, Ridvan Tairov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy...
+```
+
+---
+
+## 🙏 Acknowledgments
+
+- **NVIDIA** for Isaac Sim simulation platform
+- **MicroPython** community for embedded Python support
+- **ROS** community for URDF standards
+- Our advisor and peers for invaluable feedback
+
+
+</div>
