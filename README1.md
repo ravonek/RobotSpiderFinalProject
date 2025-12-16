@@ -218,7 +218,8 @@ python sim/isaac/robotSpiderSimulation.py
 
 **🎥 Simulation Demo**
 
-- Stored in repository: `assets/demo/simulation_demo.mp4`
+[![▶ Watch on Google Drive](https://img.shields.io/badge/▶%20Watch-Google%20Drive-4285F4?logo=googledrive&logoColor=white)](https://drive.google.com/drive/folders/1JOmnBiBbxM2T4DoV4F1_lLgWAIMYvdh8?usp=sharing)
+
 
 </td>
 <td width="50%" align="center">
