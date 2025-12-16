@@ -148,15 +148,6 @@ ampy --port /dev/ttyACM0 put firmware/pico/robotSpiderMove-1.py main.py
     └────────────────────┘
 ```
 
-### Components
-
-| Component | Specification | Quantity |
-|-----------|--------------|----------|
-| **Microcontroller** | Raspberry Pi Pico / ESP32 | 1 |
-| **Servo Motors** | MG90S or similar (180° PWM) | 12 |
-| **Power Supply** | 5-6V, 5A+ (LiPo recommended) | 1 |
-| **Frame** | 3D-printed PLA/ABS | Custom |
-| **Wiring** | Servo extension cables | 12+ |
 
 ### Leg Configuration
 
