@@ -128,7 +128,7 @@ ampy --port /dev/ttyACM0 put firmware/pico/robotSpiderMove-1.py main.py
 ```
 ┌─────────────────────────────────────────────────┐
 │                 Control Board                   │
-│         (Raspberry Pi Pico / ESP32)             │
+│         (Raspberry Pi Pico W)             │
 │                                                 │
 │  ┌──────────────────────────────────────────┐  │
 │  │   MicroPython Firmware                   │  │
