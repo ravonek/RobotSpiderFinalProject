@@ -277,6 +277,9 @@ quadruped-spider-robot/
 ├── 📄 LICENSE                       # MIT License
 └── 📄 .gitattributes                # Git LFS configuration
 ```
+## 🧩 Control Flow Diagram
+
+![Control Flow Diagram](docs/diagrams/control_flow.png)
 
 
 
