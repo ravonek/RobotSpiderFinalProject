@@ -280,6 +280,40 @@ quadruped-spider-robot/
 
 ---
 
+##🧱 Block Diagram
+
+flowchart TB
+  %% ===== High-level =====
+  U[User / Operator<br/>Keyboard / Script params] --> GP[Gait Planner<br/>walk_cycle / forward_step / forward_shift]
+  GP --> IK[Leg Kinematics<br/>IK / joint targets (a,b,c)]
+  IK --> JM[Joint Mapper<br/>JOINT_MAP + DIRECTION_MAP]
+  JM --> CMD[Joint Commands<br/>target angles per joint]
+
+  %% ===== Real robot branch =====
+  CMD --> MCU[Microcontroller<br/>Raspberry Pi Pico (MicroPython)]
+  MCU --> PWM[PWM Generator<br/>50 Hz duty_u16]
+  PWM --> S[12x Servos<br/>hip/femur/tibia]
+  S --> MECH[Mechanical Linkage<br/>4 legs × 3 DOF]
+  MECH --> BODY[Robot Body Motion<br/>walking / turning]
+
+  %% ===== Calibration / config =====
+  CAL[Calibration Params<br/>NEUTRAL_OFFSETS] --> MCU
+  CAL --> JM
+
+  %% ===== Simulation branch =====
+  CMD --> SIM[Isaac Sim Controller<br/>robotSpiderSimulation.py]
+  SIM --> URDF[URDF Model<br/>paukrobotFinished.urdf]
+  URDF --> PHYS[Physics / Contacts]
+  PHYS --> BODY
+
+  %% ===== Optional feedback (future-ready) =====
+  BODY -. optional .-> FB[Feedback (optional)<br/>IMU / foot contact / pose]
+  FB -.-> GP
+
+
+
+
+
 ## 📚 Documentation
 
 | Document | Description |
