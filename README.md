@@ -1,4 +1,4 @@
-<div align="center">
+<img width="542" height="738" alt="image" src="https://github.com/user-attachments/assets/19d14dc1-dc5d-4e56-8bea-a3864fa08730" /><div align="center">
 
 # 🕷️ Quadruped Spider Robot
 
@@ -297,49 +297,6 @@ quadruped-spider-robot/
 ---
 
 
-flowchart TB
-    %% ===== User / Control Layer =====
-    U[User / Script Parameters<br/>walk_cycle, timing]
-    
-    %% ===== High-Level Control =====
-    GP[Gait Planner<br/>Step sequence & timing<br/>(forward_step, forward_shift)]
-    
-    %% ===== Mapping & Calibration =====
-    JM[Joint Mapping<br/>JOINT_MAP]
-    CAL[Calibration<br/>NEUTRAL_OFFSETS<br/>DIRECTION_MAP]
-    
-    %% ===== Command Layer =====
-    CMD[Joint Commands<br/>Target angles per joint]
-    
-    %% ===== Real Robot Branch =====
-    MCU[Microcontroller<br/>MicroPython]
-    PWM[PWM Generator<br/>50 Hz signals]
-    S[12 Servo Motors<br/>3 DOF × 4 legs]
-    MECH[Mechanical Structure<br/>Leg linkages]
-    BODY[Robot Motion<br/>Walking / Turning]
-    
-    %% ===== Simulation Branch =====
-    SIM[Isaac Sim Controller<br/>robotSpiderSimulation.py]
-    URDF[URDF Model<br/>paukrobotFinished.urdf]
-    PHYS[Physics Engine<br/>Contacts & gravity]
-    
-    %% ===== Connections =====
-    U --> GP
-    GP --> CMD
-    CMD --> JM
-    JM --> CAL
-    CAL --> CMD
-    
-    CMD --> MCU
-    MCU --> PWM
-    PWM --> S
-    S --> MECH
-    MECH --> BODY
-    
-    CMD --> SIM
-    SIM --> URDF
-    URDF --> PHYS
-    PHYS --> BODY
 
 
 
