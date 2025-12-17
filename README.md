@@ -279,9 +279,6 @@ quadruped-spider-robot/
 ```
 
 ---
-
-##🧱 Block Diagram
-
 flowchart TB
   %% ===== High-level =====
   U[User / Operator<br/>Keyboard / Script params] --> GP[Gait Planner<br/>walk_cycle / forward_step / forward_shift]
