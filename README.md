@@ -278,33 +278,56 @@ quadruped-spider-robot/
 └── 📄 .gitattributes                # Git LFS configuration
 ```
 
----
+## 🧩 Control & Simulation Architecture
+
+The diagram below shows the full data flow between the gait planner, kinematics,
+hardware controller, and simulation environment.
+
+```mermaid
 flowchart TB
   %% ===== High-level =====
-  U[User / Operator<br/>Keyboard / Script params] --> GP[Gait Planner<br/>walk_cycle / forward_step / forward_shift]
-  GP --> IK[Leg Kinematics<br/>IK / joint targets (a,b,c)]
-  IK --> JM[Joint Mapper<br/>JOINT_MAP + DIRECTION_MAP]
-  JM --> CMD[Joint Commands<br/>target angles per joint]
+  U[User / Operator<br/>Keyboard / Script Parameters]
+  GP[Gait Planner<br/>Walk Cycle / Step Timing]
+  IK[Inverse Kinematics<br/>Joint Angles (Hip, Femur, Tibia)]
+  JM[Joint Mapper<br/>Joint Index & Direction Mapping]
+  CMD[Joint Commands<br/>Target Angles]
 
-  %% ===== Real robot branch =====
-  CMD --> MCU[Microcontroller<br/>Raspberry Pi Pico (MicroPython)]
-  MCU --> PWM[PWM Generator<br/>50 Hz duty_u16]
-  PWM --> S[12x Servos<br/>hip/femur/tibia]
-  S --> MECH[Mechanical Linkage<br/>4 legs × 3 DOF]
-  MECH --> BODY[Robot Body Motion<br/>walking / turning]
+  U --> GP
+  GP --> IK
+  IK --> JM
+  JM --> CMD
 
-  %% ===== Calibration / config =====
-  CAL[Calibration Params<br/>NEUTRAL_OFFSETS] --> MCU
+  %% ===== Real Robot Branch =====
+  MCU[Microcontroller<br/>Raspberry Pi Pico<br/>MicroPython]
+  PWM[PWM Generator<br/>50 Hz Signals]
+  S[12x Servo Motors<br/>3 DOF × 4 Legs]
+  MECH[Mechanical Structure<br/>Leg Linkages]
+  BODY[Robot Motion<br/>Walking / Turning]
+
+  CMD --> MCU
+  MCU --> PWM
+  PWM --> S
+  S --> MECH
+  MECH --> BODY
+
+  %% ===== Calibration =====
+  CAL[Calibration Parameters<br/>Neutral Offsets & Limits]
+  CAL --> MCU
   CAL --> JM
 
-  %% ===== Simulation branch =====
-  CMD --> SIM[Isaac Sim Controller<br/>robotSpiderSimulation.py]
-  SIM --> URDF[URDF Model<br/>paukrobotFinished.urdf]
-  URDF --> PHYS[Physics / Contacts]
+  %% ===== Simulation Branch =====
+  SIM[Isaac Sim Controller<br/>robotSpiderSimulation.py]
+  URDF[URDF Robot Model]
+  PHYS[Physics Engine<br/>Contacts & Gravity]
+
+  CMD --> SIM
+  SIM --> URDF
+  URDF --> PHYS
   PHYS --> BODY
 
-  %% ===== Optional feedback (future-ready) =====
-  BODY -. optional .-> FB[Feedback (optional)<br/>IMU / foot contact / pose]
+  %% ===== Optional Feedback (Future Work) =====
+  FB[Sensor Feedback (Optional)<br/>IMU / Foot Contact]
+  BODY -.-> FB
   FB -.-> GP
 
 
