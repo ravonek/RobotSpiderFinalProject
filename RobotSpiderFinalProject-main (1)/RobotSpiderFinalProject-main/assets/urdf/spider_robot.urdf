@@ -1,0 +1,376 @@
+<?xml version="1.0" ?>
+<robot name="paukrobotFinished" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/urdf/materials.xacro" />
+<xacro:include filename="C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/urdf/paukrobotFinished.trans" />
+<xacro:include filename="C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/urdf/paukrobotFinished.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.00016955291875831252 0.00042843602123220396 -0.005369271432579712" rpy="0 0 0"/>
+    <mass value="2.8741960712962804"/>
+    <inertia ixx="0.007245" iyy="0.01144" izz="0.017339" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm1_c_1">
+  <inertial>
+    <origin xyz="-0.029946151694345682 -0.028358964727659947 -0.02571701168690165" rpy="0 0 0"/>
+    <mass value="0.5290510683955291"/>
+    <inertia ixx="0.000264" iyy="0.000249" izz="0.000176" ixy="-2.4e-05" iyz="4e-06" ixz="1.7e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.08037 0.064471 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm1_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.08037 0.064471 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm1_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arn3_c_1">
+  <inertial>
+    <origin xyz="-0.029529870338683387 0.028791255186311093 -0.025717011687073334" rpy="0 0 0"/>
+    <mass value="0.5290510684044626"/>
+    <inertia ixx="0.000247" iyy="0.000266" izz="0.000176" ixy="2.4e-05" iyz="-1.6e-05" ixz="5e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.08037 -0.065329 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arn3_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.08037 -0.065329 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arn3_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm2_c_1">
+  <inertial>
+    <origin xyz="0.02852498958184861 -0.029788948887420466 -0.025717011688773307" rpy="0 0 0"/>
+    <mass value="0.5290510683955318"/>
+    <inertia ixx="0.000248" iyy="0.000265" izz="0.000176" ixy="2.4e-05" iyz="1.7e-05" ixz="-4e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.08003 0.064471 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm2_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.08003 0.064471 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm2_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm4_c_1">
+  <inertial>
+    <origin xyz="0.029788926710318256 0.02852407324108179 -0.025717011687012556" rpy="0 0 0"/>
+    <mass value="0.5290510684044586"/>
+    <inertia ixx="0.000265" iyy="0.000248" izz="0.000176" ixy="-2.4e-05" iyz="-4e-06" ixz="-1.7e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.08003 -0.065329 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm4_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.08003 -0.065329 -0.024398" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm4_c_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm2_b_1">
+  <inertial>
+    <origin xyz="0.03138248112639283 0.003097929996141238 0.03464109980924338" rpy="0 0 0"/>
+    <mass value="0.32755418991885826"/>
+    <inertia ixx="0.000213" iyy="0.000213" izz="0.000219" ixy="-6.7e-05" iyz="3.7e-05" ixz="-3.7e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.097991 0.117787 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm2_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.097991 0.117787 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm2_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm2_a_1">
+  <inertial>
+    <origin xyz="0.03601130837996572 -0.002898679609015159 -0.035689334407490905" rpy="0 0 0"/>
+    <mass value="0.8547999783547127"/>
+    <inertia ixx="0.001472" iyy="0.001452" izz="0.000573" ixy="0.000201" iyz="-0.000482" ixz="0.000504"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.126275 0.146072 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm2_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.126275 0.146072 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm2_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm1_b_1">
+  <inertial>
+    <origin xyz="0.002923304468823662 -0.03139956079474272 0.034641099809244014" rpy="0 0 0"/>
+    <mass value="0.32755418991887125"/>
+    <inertia ixx="0.000214" iyy="0.000212" izz="0.000219" ixy="6.7e-05" iyz="3.7e-05" ixz="3.8e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.133784 0.082135 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm1_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.133784 0.082135 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm1_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm3_b_1">
+  <inertial>
+    <origin xyz="-0.03125738808146379 -0.004173327185306358 0.034641099809250536" rpy="0 0 0"/>
+    <mass value="0.3275541899188592"/>
+    <inertia ixx="0.000217" iyy="0.000208" izz="0.000219" ixy="-6.7e-05" iyz="-3.6e-05" ixz="3.9e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.10015 -0.117996 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm3_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.10015 -0.117996 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm3_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm3_a_1">
+  <inertial>
+    <origin xyz="-0.036891751231667935 0.002410070342505871 -0.034815826338540294" rpy="0 0 0"/>
+    <mass value="0.8547999782553743"/>
+    <inertia ixx="0.001434" iyy="0.001446" izz="0.000617" ixy="0.000224" iyz="0.000478" ixz="-0.000535"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.129388 -0.145293 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm3_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.129388 -0.145293 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm3_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm4_b_1">
+  <inertial>
+    <origin xyz="-0.0030979521728338177 0.03138256478720529 0.03464109980924436" rpy="0 0 0"/>
+    <mass value="0.3275541899188642"/>
+    <inertia ixx="0.000213" iyy="0.000213" izz="0.000219" ixy="6.7e-05" iyz="-3.7e-05" ixz="-3.7e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.133346 -0.083289 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm4_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.133346 -0.083289 -0.010298" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm4_b_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm4_a_1">
+  <inertial>
+    <origin xyz="0.0036745845203015604 0.036787319132414315 -0.034815826338454106" rpy="0 0 0"/>
+    <mass value="0.8547999782553487"/>
+    <inertia ixx="0.001431" iyy="0.00145" izz="0.000617" ixy="-0.000224" iyz="0.000518" ixz="0.000496"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.161631 -0.111573 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm4_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.161631 -0.111573 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm4_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="arm1_a_1">
+  <inertial>
+    <origin xyz="-0.0038789798908412942 -0.03676589548426845 -0.03481582633892479" rpy="0 0 0"/>
+    <mass value="0.8547999782462374"/>
+    <inertia ixx="0.001428" iyy="0.001452" izz="0.000617" ixy="-0.000223" iyz="-0.000515" ixz="-0.000499"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.162226 0.110262 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm1_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin xyz="0.162226 0.110262 -0.07958" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="file://C:/Users/user/Downloads/paukrobotFinished_description/paukrobotFinished_description/meshes/arm1_a_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute 1" type="revolute">
+  <origin xyz="-0.08037 -0.064471 0.024398" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="arm1_c_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="1.745329" lower="-1.396263" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 4" type="revolute">
+  <origin xyz="-0.08037 0.065329 0.024398" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="arn3_c_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="1.658063" lower="-1.48353" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 7" type="revolute">
+  <origin xyz="0.08003 -0.064471 0.024398" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="arm2_c_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="1.658063" lower="-1.48353" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 10" type="revolute">
+  <origin xyz="0.08003 0.065329 0.024398" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="arm4_c_1"/>
+  <axis xyz="0.0 0.0 1.0"/>
+  <limit upper="1.745329" lower="-1.396263" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 30" type="revolute">
+  <origin xyz="0.017961 -0.053316 -0.0141" rpy="0 0 0"/>
+  <parent link="arm2_c_1"/>
+  <child link="arm2_b_1"/>
+  <axis xyz="0.707107 0.707107 -0.0"/>
+  <limit upper="1.919862" lower="-0.523599" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 31" type="revolute">
+  <origin xyz="0.028284 -0.028285 0.069282" rpy="0 0 0"/>
+  <parent link="arm2_b_1"/>
+  <child link="arm2_a_1"/>
+  <axis xyz="-0.707107 -0.707107 0.0"/>
+  <limit upper="0.959931" lower="-0.349066" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 32" type="revolute">
+  <origin xyz="-0.053414 -0.017664 -0.0141" rpy="0 0 0"/>
+  <parent link="arm1_c_1"/>
+  <child link="arm1_b_1"/>
+  <axis xyz="0.703165 -0.711027 -0.0"/>
+  <limit upper="1.919862" lower="-0.523599" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 33" type="revolute">
+  <origin xyz="-0.01978 0.052667 -0.0141" rpy="0 0 0"/>
+  <parent link="arn3_c_1"/>
+  <child link="arm3_b_1"/>
+  <axis xyz="-0.682416 -0.730964 0.0"/>
+  <limit upper="1.919862" lower="-0.523599" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 34" type="revolute">
+  <origin xyz="-0.029238 0.027297 0.069282" rpy="0 0 0"/>
+  <parent link="arm3_b_1"/>
+  <child link="arm3_a_1"/>
+  <axis xyz="0.682416 0.730964 -0.0"/>
+  <limit upper="0.959931" lower="-0.349066" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 35" type="revolute">
+  <origin xyz="0.053316 0.01796 -0.0141" rpy="0 0 0"/>
+  <parent link="arm4_c_1"/>
+  <child link="arm4_b_1"/>
+  <axis xyz="-0.707107 0.707107 0.0"/>
+  <limit upper="1.919862" lower="-0.523599" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 36" type="revolute">
+  <origin xyz="0.028285 0.028284 0.069282" rpy="0 0 0"/>
+  <parent link="arm4_b_1"/>
+  <child link="arm4_a_1"/>
+  <axis xyz="0.707107 -0.707107 -0.0"/>
+  <limit upper="0.959931" lower="-0.349066" effort="100" velocity="100"/>
+</joint>
+
+<joint name="Revolute 37" type="revolute">
+  <origin xyz="-0.028442 -0.028127 0.069282" rpy="0 0 0"/>
+  <parent link="arm1_b_1"/>
+  <child link="arm1_a_1"/>
+  <axis xyz="-0.703165 0.711027 0.0"/>
+  <limit upper="0.959931" lower="-0.349066" effort="100" velocity="100"/>
+</joint>
+
+</robot>
