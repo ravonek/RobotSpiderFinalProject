@@ -1,4 +1,4 @@
-<img width="542" height="738" alt="image" src="https://github.com/user-attachments/assets/19d14dc1-dc5d-4e56-8bea-a3864fa08730" /><div align="center">
+
 
 # 🕷️ Quadruped Spider Robot
 
@@ -279,8 +279,8 @@ quadruped-spider-robot/
 ```
 ## 🧩 Control Flow Diagram
 
-![Control Flow Diagram](docs/diagrams/control_flow.png)
-
+- ![Control Flow Diagram](docs/diagrams/control_flow.png)
++ ![Control Flow Diagram](https://github.com/user-attachments/assets/19d14dc1-dc5d-4e56-8bea-a3864fa08730)
 
 
 
